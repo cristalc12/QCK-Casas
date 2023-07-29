@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verify the password
     if (password_verify($password, $hashed_password)) {
         $_SESSION["username"] = $username;
-        header("Location: home.php");
+        header("Location: dashboard.php");
     } else {
         echo "Invalid username or password.";
     }
