@@ -1,6 +1,10 @@
 <?php
 // home.php
-
+$servername = "localhost";
+$username = "sagustin1";
+//username = password  = dbname
+$password = "sagustin1";
+$dbname = "sagustin1";
 session_start();
 
 // Check if the user is logged in
