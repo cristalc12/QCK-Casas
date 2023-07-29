@@ -40,9 +40,11 @@ $sql_properties = "CREATE TABLE IF NOT EXISTS properties (
     user_id INT NOT NULL,
     title VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url LONGTEXT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    created_date DATE NOT NULL,
+    yearBuilt INT(11) NOT NULL,
+    bathrooms INT(10) NOT NULL,
+    bedrooms INT(10) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 )";
 
