@@ -27,16 +27,6 @@ if ($conn->connect_error) {
 
 $user_id = $_SESSION["user_id"]; 
 
-$sql = "SELECT * FROM properties WHERE user_id = $user_id";
-$result = $conn->query($sql);
-
-$properties = array();
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $properties[] = $row;
-    }
-}
-
 $conn->close();
 ?>
 
@@ -47,23 +37,21 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="dashboard.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <title>Dashboard</title>
 </head>
 <body>
     <div class="grid-container">
         <header class="header">
             <div class="menu-icon" onclick="openSidebar()">
-                <span class="material-icons-outlined">menu</span>
+                <button class="material-icons-outlined" type="submit"><img src="icons\menu.png" style="background:transparent;"/></button>
             </div>
             <div class="header-left">
-                <span class="material-icons-outlined">search</span>
+                <button class="material-icons-outlined" type="submit"><img src="icons\search.png"/></button>
             </div>
             <div class="header-right">
-                <span class="material-icons-outlined">notifications</span>
-                <span class="material-icons-outlined">email</span>
-                <span class="material-icons-outlined">account_circle</span>
+                <button class="material-icons-outlined" type="submit"><img src="icons\notification.png"/></button>
+                <button class="material-icons-outlined" type="submit"><img src="icons\mail.png"/></button>
+                
             </div>
         </header>
 
@@ -75,16 +63,21 @@ $conn->close();
             </div>
             <ul class="sidebar-list">
                 <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">grid_view</span>Dashboard
+                <button class="material-icons-outlined" type="submit"><img src="icons\grid.png"/></button>Dashboard
                 </li>
                 <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">home</span>All Listings
+                    <button class="material-icons-outlined" type="submit"><img src="icons\home.png"/></button>All Listings
                 </li>
                 <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">pending</span>Inquiries
+                    <button class="material-icons-outlined" type="submit"><img src="icons\pending.png"/></button>Inquiries
                 </li>
                 <li class="sidebar-list-item">
-                    <span class="material-icons-outlined">settings</span>Settings
+                    <button class="material-icons-outlined" type="submit"><img src="icons/settings.png"/></button>Settings
+                </li>
+                <li>
+                    <form action="home.php" method="POST">
+                        <button class = "logout" type="submit" name="logout"> Log Out
+                    </form>
                 </li>
             </ul>
         </aside>
@@ -92,31 +85,40 @@ $conn->close();
         <main class="main-container">
             <div class="main-title">
                 <p class="font-weight-bold">DASHBOARD</p>
+                <button class="material-icons-outlined">Add Property<a href="add_property.php" id="add-property-button"><img src="icons/add.png"/></a></button> 
             </div>
-            <a href="add_property.php" id="add-property-button">+</a>
-            <div class="main-cards">
-                <?php foreach ($properties as $property) { ?>
-                    <a href="property_details.php?id=<?php echo $property["id"]; ?>">
-                        <div class="property-card">
-                        <img src="<?php echo $property["image_url"]; ?>" alt="<?php echo $property["title"]; ?>">
-                            <div class="property-details">
-                                <h3><?php echo $property["title"]; ?></h3>
-                                <p><?php echo $property["city"] . ', ' . $property["state"]; ?></p>
-                            </div>
-                        </div>
-                    </a>
-                <?php } ?>
-    
-                <?php if (empty($properties)) { ?>
-                    <p>No properties found.</p>
-                <?php } ?>
-            </div>
+            <section class="main-cards">
+                <div class = "card-container">
+                    <?php
+
+                    $sql = "SELECT * FROM properties";
+                    $stmt = mysqli_stmt_init($conn);
+
+                    if(mysqli_stmt_prepare($stmt, $sql)) {
+                        echo "SQL statement failed";
+                    } else {
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<a href = "#">
+                                <div style = "background-image: url(includes/'.$row["title"].');"></div>
+                                <h3>'.$row["title"].'</h3>
+                                <p>'.$row["description"].'</p>
+                                <p>'.$row["yearBuilt"].'</p>
+                            </a>';
+                        }
+                    }
 
 
-    
-    <form action="home.php" method="POST">
-        <input type="submit" name="logout" value="Log out">
-    </form>
+                    
+                    ?>
+                </div>
+
+            </section>
+       
+           
+        </main>
 
     <script src="dashboard.js"></script>
 </body>
