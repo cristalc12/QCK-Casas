@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('im2.jfif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: bisque;
+    padding: 28px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form input[type="password"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form select {
+  appearance: auto;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button a {
+  text-decoration: none;
+  color: #333;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 38%
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Additional styling for error messages or required fields */
+form input:invalid,
+form select:invalid {
+  border-color: #f44336;
+}
+
+form input:invalid:focus,
+form select:invalid:focus {
+  outline: none;
+}
+
+/* Additional styling for successful form submission message (not implemented in HTML) */
+.success-message {
+  color: green;
+  font-weight: bold;
+}
