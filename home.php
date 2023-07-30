@@ -36,7 +36,7 @@ if (isset($_POST["logout"])) {
         <?php endif; ?>
     </div>
     <div class="hero-text">
-        <h1>Welcome to EstateNexus<?php if(isset($_SESSION["username"])) { echo ", " . $_SESSION["username"]; } ?>!</h1>
+        <h1>Welcome to EstateLink<?php if(isset($_SESSION["username"])) { echo ", " . $_SESSION["username"]; } ?>!</h1>
         <p>Your one-stop solution for seamless property transactions</p>
     </div>
 </section>
