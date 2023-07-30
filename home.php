@@ -54,6 +54,7 @@ if (isset($_POST["logout"])) {
     </div>
 
     <footer class="footer">
+        <p><a href="about.html">Creators Page</a></p>
         <div class="container">
             <p>&copy; 2023 EstateLink Inc.</p>
         </div>
