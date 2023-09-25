@@ -25,27 +25,30 @@ if (isset($_POST["logout"])) {
 </head>
 
 <body>
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Welcome to EstateLink Inc.<?php if(isset($_SESSION["username"])) { echo ", " . $_SESSION["username"]; } ?>!</h1>
-            <p>Your one-stop solution for seamless property transactions</p>
-            <?php if(isset($_SESSION["username"])) : ?>
-            <form action="home.php" method="POST">
-                <input type="submit" name="logout" value="Log out">
-            </form>
-            <?php else : ?>
-            <a href="login.php">Login</a> | <a href="register.php">Sign up</a>
-            <?php endif; ?>
-        </div>
-    </section>
+<section class="hero">
+    <div class="login-signup">
+        <?php if(isset($_SESSION["username"])) : ?>
+        <form action="home.php" method="POST">
+            <input type="submit" name="logout" value="Log out">
+        </form>
+        <?php else : ?>
+        <a href="login.php">Login</a> | <a href="register.php">Sign up</a>
+        <?php endif; ?>
+    </div>
+    <div class="hero-text">
+        <h1>Welcome to EstateLink<?php if(isset($_SESSION["username"])) { echo ", " . $_SESSION["username"]; } ?>!</h1>
+        <p>Your one-stop solution for seamless property transactions</p>
+    </div>
+</section>
+
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
+        <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">What We Do</h5>
-                        <p class="card-text">Our robust platform serves as a dynamic marketplace...</p>
+                        <p>EstateLink bridges the gap between property buyers and sellers by offering a unified platform for seamless transactions. Our personalized seller dashboard, easy property management, creative design, and agile development makes property management a breeze.</p>
                     </div>
                 </div>
             </div>

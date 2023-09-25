@@ -1,0 +1,226 @@
+/* fill entire web page */
+body {
+    margin:  0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #e6e8ed;
+    color: #666666;
+    font-family: "Montserrat", sans-serif;
+}
+
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: black;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-gap: 10px;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+form input[type="submit"],
+form button {
+    grid-column: 2;
+    background-color: rgb(16, 103, 225);
+}
+
+
+form button[type="button"] {
+    display: flex;
+    background-color: red;
+    padding: 8px 20px;
+    color: #000;
+    border-radius: 4px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+
+.material-icon-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    cursor: pointer;
+    
+}
+
+.font-weight-bold {
+    font-weight: 600;
+  }
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+        "sidebar header header header"
+        "sidebar main main main";
+    height: 100vh;
+}
+
+/*----HEADER----*/
+.header{
+
+    grid-area: header;
+    height: 70px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    box-shadow: 0 6px 7px -4px rgba(0,0,0,0.2);
+}
+
+.header-left, .header-right {
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: none;
+}
+
+/*----SIDEBAR----*/
+#sidebar{
+
+    grid-area: sidebar;
+    height: 100%;
+    background-color: #21232d;
+    color:#9799ab;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+
+}
+
+.sidebar-title > span {
+    display: none;
+}
+
+.sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
+
+.sidebar-list {
+    padding:0;
+    margin-top: 15px;
+    list-style-type: none;
+}
+
+.sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+}
+
+.sidebar-list-item:hover {
+
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+.sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+}
+/*----MAIN----*/
+.main-container {
+
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+}
+
+.main-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.maint-title > p {
+    font-size: 20px;
+}
+
+
+.main-cards {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.card {
+    background: white;
+    width: 270px;
+    height: 400px;
+    margin: 10px;
+}
+
+.card-image {
+    background-color: aqua;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.card-container a {
+    width: 230px;
+    margin: 20px 10px 0;
+
+}
+
+.card-container a:hover {
+    opacity: 0.8;
+}
+
+.card-container a div {
+    width: 100%;
+    height: 235px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.card-container a h3 {
+    font-size: 20px;
+    font-weight: 700;
+
+}

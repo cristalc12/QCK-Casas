@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verify the password
     if (password_verify($password, $hashed_password)) {
         $_SESSION["username"] = $username;
-        header("Location: home.php");
+        header("Location: dashboard.php");
     } else {
         echo "Invalid username or password.";
     }
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style1.css">
 </head>
 <body>
     <h2>Login</h2>

@@ -34,5 +34,26 @@
         echo "Error creating table: " . $conn->error . "\r\n";
     }
 
-    $conn->close();
+  
+$sql_properties = "CREATE TABLE IF NOT EXISTS properties (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    image_url LONGTEXT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    yearBuilt INT(11) NOT NULL,
+    bathrooms INT(10) NOT NULL,
+    bedrooms INT(10) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)";
+
+if ($conn->query($sql_properties) === TRUE) {
+    echo "Properties database created successfully.\r\n";
+} else {
+    echo "Error creating 'properties' table: " . $conn->error . "\r\n";
+}
+
+
+$conn->close();
 ?>
